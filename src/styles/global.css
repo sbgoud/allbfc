@@ -1,0 +1,36 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Example component styles - adjust as needed */
+  .navbar {
+    background-color: #f0f0f0;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+  }
+  
+  .welcome-greeting {
+    margin: 20px;
+  }
+  
+  .file-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px;
+  }
+  
+  .file-item {
+    border: 1px solid #ccc;
+    padding: 15px;
+  }
+  
+  
