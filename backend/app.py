@@ -3,8 +3,14 @@ import uuid
 from telethon import TelegramClient, events
 from functools import wraps
 from cryptography.fernet import Fernet # For token decryption
+from flask_cors import CORS
 
 # ... other imports 
+
+app = Flask(__name__)
+CORS(app, origins=["https://allbfc.vercel.app"]) # Replace with your Vercel URL
+# ... your routes
+
 
 @app.route('/telegram-login')
 def telegram_login():

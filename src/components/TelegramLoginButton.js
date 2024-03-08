@@ -9,9 +9,13 @@ const TelegramLogin = ({ onTelegramAuth }) => {
     onTelegramAuth(response); 
     // Fetch instructions from headers (implementation may change)
     const instructions = Cookies.get('telegram-auth'); 
+    console.log("Instructions:", instructions); // Log 1
 
     if (instructions && instructions.action === 'store_token') {
+        const tokenToEncrypt = instructions.token;
+        console.log("Token before encryption:", tokenToEncrypt); // Log 2
       const encryptedToken = CryptoJS.AES.encrypt(instructions.token, 'your-secret-key').toString(); 
+      console.log("Encrypted Token:", encryptedToken); // Log 3 
       localStorage.setItem('bharatfreecloud_token', encryptedToken); 
     }
   };
@@ -19,7 +23,7 @@ const TelegramLogin = ({ onTelegramAuth }) => {
   return (
     <TelegramLoginButton 
         dataOnauth={handleTelegramResponse} 
-        botName="bharatfreecloud_bot" 
+        botName="7137528102:AAF1o57ztPpfpkkOqk15C5jwSRLpRGv-McM" 
     />
   );
 };
