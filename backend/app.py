@@ -29,24 +29,8 @@ def telegram_login():
     }
 
     # 4. Redirect with Instructions
-    return redirect("http://localhost:3000/", 
+    return redirect("https://allbfc.vercel.app/", 
                       headers={ 'telegram-auth': jsonify(frontend_instructions) })
-
-@app.route('/fetch-files')
-@requires_auth
-def fetch_files():
-    # 1. Retrieve token from frontend (request header or query parameter)
-    auth_token = request.headers.get('Authorization')  # Example
-
-    # 2. Validate token (decrypt, check against stored data/expiry) 
-    #    - Return an error if the token is invalid
-
-    # 3. Telethon Interaction
-    async with TelegramClient('bharatfreecloudtest', api_id, api_hash) as client:
-        # Your Telethon logic to fetch files from 'Saved Messages'
-        messages = await fetch_files()  # Assume you have this function
-
-    return jsonify(messages)  # Return the list of files
 
 
 # A simple decorator for token-based authentication
@@ -67,3 +51,21 @@ def requires_auth(f):
 
     return f(*args, **kwargs)
   return wrapper
+
+
+@app.route('/fetch-files')
+@requires_auth
+async def fetch_files():
+    # 1. Retrieve token from frontend (request header or query parameter)
+    auth_token = request.headers.get('Authorization')  # Example
+
+    # 2. Validate token (decrypt, check against stored data/expiry) 
+    #    - Return an error if the token is invalid
+
+    # 3. Telethon Interaction
+    async with TelegramClient('bharatfreecloudtest', api_id, api_hash) as client:
+        # Your Telethon logic to fetch files from 'Saved Messages'
+        messages = await fetch_files()  # Assume you have this function
+
+    return jsonify(messages)  # Return the list of files
+
