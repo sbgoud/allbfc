@@ -14,7 +14,7 @@ const TelegramLogin = ({ onTelegramAuth }) => {
     if (instructions && instructions.action === 'store_token') {
         const tokenToEncrypt = instructions.token;
         console.log("Token before encryption:", tokenToEncrypt); // Log 2
-      const encryptedToken = CryptoJS.AES.encrypt(instructions.token, 'your-secret-key').toString(); 
+      const encryptedToken = CryptoJS.AES.encrypt(instructions.token, 'developedbyshashank').toString(); // secret key
       console.log("Encrypted Token:", encryptedToken); // Log 3 
       localStorage.setItem('bharatfreecloud_token', encryptedToken); 
     }
@@ -23,7 +23,7 @@ const TelegramLogin = ({ onTelegramAuth }) => {
   return (
     <TelegramLoginButton 
         dataOnauth={handleTelegramResponse} 
-        botName="7137528102:AAF1o57ztPpfpkkOqk15C5jwSRLpRGv-McM" 
+        botName="bharatfreecloud_bot" 
     />
   );
 };
