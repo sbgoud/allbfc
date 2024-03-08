@@ -11,6 +11,9 @@ function FileGrid() {
         try {
           const token = localStorage.getItem('bharatfreecloud_token');
           console.log('Token:', token)
+          console.log('Token from localStorage:', localStorage.getItem('bharatfreecloud_token'));
+console.log('Headers:', { headers: { 'Authorization': `Bearer ${token}` }}); 
+
           const response = await fetch('http://localhost:5000/fetch-files', {
             headers: {
               'Authorization': `Bearer ${token}` 
