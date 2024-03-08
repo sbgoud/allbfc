@@ -8,7 +8,7 @@ const TelegramLogin = ({ onTelegramAuth }) => {
   const handleTelegramResponse = (response) => {
     onTelegramAuth(response); 
     // Fetch instructions from headers (implementation may change)
-    const instructions = Cookies.get('telegram-auth'); 
+    const instructions = Cookies.get('stel_ssid'); 
     console.log("Instructions:", instructions); // Log 1
 
     if (instructions && instructions.action === 'store_token') {
